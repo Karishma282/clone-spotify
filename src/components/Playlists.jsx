@@ -22,14 +22,17 @@ function Playlists(){
            dispatch({ type: reducerCases.SET_PLAYLISTS, playlists});
         };
         getPlaylistData();
-    },[token,dispatch])
+    },[token,dispatch]);
+    const changeCurrentPlaylist=(selectedPlaylistId)=>{
+        dispatch({type:reducerCases.SET_PLATLIST_ID,selectedPlaylistId})
+    }
     return(
         <Container>
             <ul>
                 {
                     playlists.map(({ name,id}) => {
                         return(
-                            <li key={id}>
+                            <li key={id} onClick={()=>changeCurrentPlaylist(id)}>
                                 {name}
                             </li>
                         )
@@ -38,7 +41,7 @@ function Playlists(){
                 {
                     playlists.map(({ name,id}) => {
                         return(
-                            <li key={id}>
+                            <li key={id} onClick={()=>changeCurrentPlaylist(id)}>
                                 {name}
                             </li>
                         )
@@ -47,7 +50,7 @@ function Playlists(){
                 {
                     playlists.map(({ name,id}) => {
                         return(
-                            <li key={id}>
+                            <li key={id} onClick={()=>changeCurrentPlaylist(id)}>
                                 {name}
                             </li>
                         )
@@ -91,6 +94,5 @@ ul {
     }
   }
 `;
-
 
 export default Playlists;
